@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<main>
+
+    
+<router-view></router-view>
+
+      <usuarios>
+      	<h1>Buscar usuarios</h1>
+      </usuarios>
+		 
+</main>
+
+
+
+<template id="usuarios-template">
+	
+	<div>
+			<section>
+				<slot>Buscar</slot>
+		    <input type="search" placeholder="buscar user" v-model="busqueda">
+		    <router-link to="/home">Home</router-link>
+			<router-link to="/contact">Contacto</router-link>
+			
+				<hr>
+			</section>
+
+	     	<section>
+		    	 <!-- pasamos los datos a otro ccomponetente -->
+		    	 <usuario :usu="user" v-for='user in filtrarBusqueda'></usuario>
+	     	</section>
+
+	
+
+       </div>
+</template>
+
+
+
+<!-- otro ccomponetente -->
+<template id="usuario-template">
+	<div>
+		
+
+						<li>
+								<strong>{{usu.name.first}} {{usu.name.last}}</strong><br>
+								<p>{{usu.email}}</p>
+								<img  :src="usu.picture.medium" >
+						</li>
+						<hr>
+		
+	</div>
+</template>
+
+
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.7.0/vue-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+
+
+<script src="../assets/js/home.js">
+	
+
+</script>
+</html>
